@@ -21,8 +21,9 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  if (number < 0) return false;
+  return true;
 }
 
 /**
@@ -38,8 +39,14 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  if (a > b && a > c) {
+    return a;
+  }
+  if (b > a && b > c) {
+    return b;
+  }
+  return c;
 }
 
 /**
@@ -82,8 +89,12 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a === 0 || b === 0 || c === 0) return false;
+  if (a === b && a + b >= c) return true;
+  if (b === c && b + c >= a) return true;
+  if (a === c && a + c >= b) return true;
+  return false;
 }
 
 /**
@@ -100,8 +111,22 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let i = num;
+  let result = '';
+  while (i >= 10) {
+    i -= 10;
+    result += 'X';
+  }
+  while (i >= 5) {
+    i -= 5;
+    result += 'V';
+  }
+  while (i >= 1) {
+    i -= 1;
+    result += 'I';
+  }
+  return result;
 }
 
 /**
@@ -135,8 +160,15 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let variable = '';
+  for (let i = 0; i < str.length; i += 1) {
+    variable = `${str[i]}${variable}`;
+  }
+  if (variable === str) {
+    return true;
+  }
+  return false;
 }
 
 /**
