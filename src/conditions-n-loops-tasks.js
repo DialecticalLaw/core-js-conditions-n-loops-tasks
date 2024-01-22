@@ -67,8 +67,53 @@ function getMaxNumber(a, b, c) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  for (let i = queen.x; i <= king.x; i += 1) {
+    if (i === king.x && queen.y === king.y) return true;
+  }
+  for (let i = queen.y; i <= king.y; i += 1) {
+    if (i === king.y && queen.x === king.x) return true;
+  }
+  for (let i = queen.x; i >= king.x; i -= 1) {
+    if (i === king.x && queen.y === king.y) return true;
+  }
+  for (let i = queen.y; i >= king.y; i -= 1) {
+    if (i === king.y && queen.x === king.x) return true;
+  }
+
+  let i = queen.x;
+  let n = queen.y;
+  while (i <= 8 && n <= 8) {
+    if (i === king.x && n === king.y) return true;
+    i += 1;
+    n += 1;
+  }
+
+  i = queen.x;
+  n = queen.y;
+  while (i >= 1 && n <= 8) {
+    if (i === king.x && n === king.y) return true;
+    i -= 1;
+    n += 1;
+  }
+
+  i = queen.x;
+  n = queen.y;
+  while (i <= 8 && n >= 1) {
+    if (i === king.x && n === king.y) return true;
+    i += 1;
+    n -= 1;
+  }
+
+  i = queen.x;
+  n = queen.y;
+  while (i >= 1 && n >= 1) {
+    if (i === king.x && n === king.y) return true;
+    i -= 1;
+    n -= 1;
+  }
+
+  return false;
 }
 
 /**
@@ -111,23 +156,31 @@ function isIsoscelesTriangle(a, b, c) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  // let i = num;
-  // let result = '';
-  // while (i >= 10) {
-  //   i -= 10;
-  //   result += 'X';
-  // }
-  // while (i >= 5) {
-  //   i -= 5;
-  //   result += 'V';
-  // }
-  // while (i >= 1) {
-  //   i -= 1;
-  //   result += 'I';
-  // }
-  // return result;
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let i = num;
+  let result = '';
+  while (i >= 10) {
+    i -= 10;
+    result += 'X';
+  }
+  while (i >= 9) {
+    i -= 9;
+    result += 'IX';
+  }
+  while (i >= 5) {
+    i -= 5;
+    result += 'V';
+  }
+  while (i >= 4) {
+    i -= 4;
+    result += 'IV';
+  }
+  while (i >= 1) {
+    i -= 1;
+    result += 'I';
+  }
+
+  return result;
 }
 
 /**
