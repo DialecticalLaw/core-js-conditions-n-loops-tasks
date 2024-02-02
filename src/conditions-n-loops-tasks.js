@@ -312,8 +312,20 @@ function getIndexOf(str, letter) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  let variable = num;
+
+  while (variable > 0) {
+    let divisible = variable;
+    while (divisible > 9) {
+      divisible %= 10;
+    }
+    if (divisible === digit) return true;
+
+    variable = Math.floor(variable / 10);
+  }
+
+  return false;
 }
 
 /**
@@ -412,8 +424,21 @@ function sortByAsc(/* arr */) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  let strIteration = str;
+  let strVariable;
+  for (let i = 0; i < iterations; i += 1) {
+    strVariable = '';
+    for (let n = 0; n < strIteration.length; n += 1) {
+      if (n % 2 !== 0) strVariable += strIteration[n];
+    }
+
+    for (let n = strIteration.length - 1; n >= 0; n -= 1) {
+      if (n % 2 === 0) strVariable = strIteration[n] + strVariable;
+    }
+    strIteration = strVariable;
+  }
+  return strVariable;
 }
 
 /**
